@@ -1,11 +1,11 @@
 ## create a script to random test
 
 ## reset working directory to protect from Arun's changes
-setwd("/srv/code/r-programming/")
+#setwd("/srv/code/r-programming/")
 
 ## load my function and arun's
 source("assign-1/pollutantmean.R") #brad's script
-source("misc/arun-pollutantmean.R") #arun's scipt
+source("misc/g-pollutantmean.R") #arun's scipt
 
 ## set some general valid parameters to test
 validDirectory <- c("specdata")
@@ -25,11 +25,11 @@ for (i in 1:1000) {
     runID <- as.numeric(strtrim(sample(validFile, 1), 3))
     
     ## protect my script from working directory changes
-    setwd("/srv/code/r-programming/")
+#    setwd("/srv/code/r-programming/")
     
     ## run the scripts
     brad <- pollutantmean(runDirectory, runPollutant, runID)
-    arun <- arunpollutantmean(runDirectory, runPollutant, runID)
+    arun <- gpollutantmean(runDirectory, runPollutant, runID)
     
     pass <- identical(brad, arun)
     

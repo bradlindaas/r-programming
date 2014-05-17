@@ -15,5 +15,4 @@ pollutantmean <- function (directory, pollutant , id = 1:332) {
     }
     
     m<-mean(df[,pollutant], na.rm=T)
-    print(m)
 }
