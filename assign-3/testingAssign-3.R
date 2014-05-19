@@ -1,11 +1,11 @@
 source("2-rankall.R")
     originalRun <- system.time ( {
-    originalResult <- rankall("pneumonia", "worst")
+    originalResult <- rankall("heart attack", 4)
 } )
 
 source("rankall.R")
     updatedRun <- system.time ( {
-    updatedResult <- rankall("pneumonia", "worst")
+    updatedResult <- rankall("heart attack", 4)
 } )
 
 
@@ -20,3 +20,4 @@ source("rankall.R")
 #[9] 'rankall' part 2       rankall("pneumonia", "worst")
 #[10] 'rankall' part 3      rankall("heart failure", 10)
 
+identical (updatedResult, originalResult)
