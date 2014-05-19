@@ -1,5 +1,5 @@
 best <- function(state, outcome) {    
-    source("helpFunctions.R")
+    source("assign-3/helpFunctions.R")
     
     data <- readData()
     

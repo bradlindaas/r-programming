@@ -8,7 +8,8 @@ sort <- function(state, outcome) {
     
     data <-read.csv("outcome-of-care-measures.csv", 
                     colClasses = "character", 
-                    na.strings="Not Available")
+                    na.strings="Not Available",
+                    stringsAsFactors=F)
     data[,7]<-(as.factor(data[,7])) ## make State a factor
     validStates <- levels(data[,7])
     validOutcomes <- c("heart attack", "heart failure", "pneumonia")

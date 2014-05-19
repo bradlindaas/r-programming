@@ -1,5 +1,5 @@
 rankhospital <- function(state, outcome, num = "best") {
-    source("assign-3/helpFunctions.R")
+    source("helpFunctions.R")
     
     data <- readData()
     

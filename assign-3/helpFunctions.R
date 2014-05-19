@@ -6,7 +6,8 @@ getValidStates <- function(data) {
 readData <- function (
     fileLocation = "/srv/code/r-programming/assign-3/outcome-of-care-measures.csv") {
     #read data
-    data <-read.csv(fileLocation, colClasses = "character", na.strings="Not Available")
+    data <-read.csv(fileLocation, colClasses = "character", 
+                    na.strings="Not Available", stringsAsFactors=F)
     ## tidy the data
     data[,7]<-(as.factor(data[,7])) #make state a factor
     colnames(data)[c(2,7,11,17,23)] <- c("hospital", "state", "heart attack", "heart failure", "pneumonia")   
@@ -18,6 +19,7 @@ readData <- function (
 
 getRank <- function (data, outcome, num = "best") {
     ## Format and check the num arg
+
     if (num == "best") {
         num <- 1
     } else if (num=="worst") {
@@ -26,7 +28,8 @@ getRank <- function (data, outcome, num = "best") {
         ## Bad range, time to return NA and end the function
         return(NA)
     }    
-    data[num,1]
+    x <- (data[num,1])
+    return(x)
 }
 
 validateOutcome <- function (outcome) {
@@ -50,11 +53,14 @@ validateState <- function (state, data) {
 sortByOutcome <- function (data, outcome) {
     data <- data[order(data[,3], data[,1]),]
     data <- data[order(data[,outcome], data[,"hospital"]),]
-    data
+    return(data)
 }
 
 extractByState <- function (data, state) {
     data <- data[data$state==state,]
-    data
+    return(data)
 }
 
+addStateAsLastColumn <- function(x) {
+    x[[1]][[2]] <- names(x[1])
+}
