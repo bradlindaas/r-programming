@@ -1,6 +1,6 @@
 ## Two functions to cache the calculation of an inverted matrix
 ## to use, first create a matrix
-## matrix <- matrix (sample(9), 3, 3)
+## matrix <- matrix (sample(16), 4, 4)
 ## then store the matrix is a 'makeCacheMatrix' object
 ## stored <- makeCacheMatrix(matrix)
 ## then solve the inverted matrix
@@ -43,5 +43,13 @@ cacheSolve <- function(x, ...) {
     ## store the solution in the cache
     x$setinvert(i)
     ## return the solution
-    i
+    return(i)
 }
+
+#matrix <-
+#    structure(c(12L, 7L, 4L, 11L, 6L, 8L, 10L, 15L, 9L, 13L, 2L, 
+#                14L, 16L, 5L, 1L, 3L), .Dim = c(4L, 4L))
+#stored <- makeCacheMatrix(matrix)
+#cacheSolve(stored)
+#cacheSolve(stored)
+
