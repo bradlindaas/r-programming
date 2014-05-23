@@ -4,12 +4,12 @@ for (i in 1:100) {
 
     matrix <- matrix (sample(25), 5, 5)
     
-    source("assign-2/cachematrix.R") #brad's script
+    source("assign-2/brad-cachematrix.R") #brad's script
     bradStored <- makeCacheMatrix(matrix)
     bradSolved<- cacheSolve(bradStored)
     brad2Solved<- cacheSolve(bradStored)
     
-    source("assign-2/jdb-cachematrix.R") #brad's script
+    source("assign-2/cachematrix.R") #james's script
     jdbStored <- makeCacheMatrix(matrix)
     jdbSolved<- cacheSolve(jdbStored)
     jdb2Solved<- cacheSolve(jdbStored)
