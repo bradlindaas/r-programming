@@ -1,6 +1,6 @@
 ## Two functions to cache the calculation of an inverted matrix
 ## to use, first create a matrix
-## matrix <- matrix (sample(16), 4, 4)
+## matrix <- matrix (rnorm(9), 3, 3)
 ## then store the matrix is a 'makeCacheMatrix' object
 ## stored <- makeCacheMatrix(matrix)
 ## then solve the inverted matrix
@@ -9,26 +9,31 @@
 
 
 ## this is a function that constructs a storage object
-
 makeCacheMatrix <- function(x = matrix()) {
+    
+    ## initialize the invert holder
     i = NULL
+    ##function to set (store) the matrix
     set <- function(y) {
         x <<- y
         i <<- NULL
     }
+    ##function to retreive the matrix
     get <- function() x
+    ##function to set (store) the solution to inverted matrix
     setinvert <- function(invert) i <<- invert
+    ##function to reteive the solution
     getinvert <- function() i
+    ##return a list of the functions/values
     list(set = set, get = get,
          setinvert = setinvert,
          getinvert = getinvert)
 }
 
 
-## this is a function that solved a matrix inversion, checking the cache first
-
+## This function solved the inverted matrix, but checks cache first
 cacheSolve <- function(x, ...) {
-    ## Return a matrix that is the inverse of 'x'
+    ## Return a matrix that is the inverse of 'x' 
     ## check to see if there is a cached inverted matrix
     ## if there is a cached answer, return it
     i <- x$getinvert()
@@ -43,13 +48,5 @@ cacheSolve <- function(x, ...) {
     ## store the solution in the cache
     x$setinvert(i)
     ## return the solution
-    return(i)
+    i
 }
-
-#matrix <-
-#    structure(c(12L, 7L, 4L, 11L, 6L, 8L, 10L, 15L, 9L, 13L, 2L, 
-#                14L, 16L, 5L, 1L, 3L), .Dim = c(4L, 4L))
-#stored <- makeCacheMatrix(matrix)
-#cacheSolve(stored)
-#cacheSolve(stored)
-
