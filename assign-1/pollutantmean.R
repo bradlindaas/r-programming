@@ -14,5 +14,5 @@ pollutantmean <- function (directory, pollutant , id = 1:332) {
         df<-rbind(df, data)
     }
     
-    m<-mean(df[,pollutant], na.rm=T)
+    mean(df[,pollutant], na.rm=T)
 }
